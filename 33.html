@@ -1,0 +1,62 @@
+<html style="height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 33</title>
+</head>
+<body style="height: 100%;">
+<div id="main" style="background: teal; height: 100%" >
+    <div id="heading">
+        <h1 style="text-align: center; margin: 0; padding-top: 5%; color: yellow">Как Вы себя чувствуете</h1>
+    </div>
+    <div id="contacts" style="background: aliceblue; margin-left: 20%; margin-right: 20%;">
+        <div id="post-heading" style="text-align: center; margin: 3%;"><h2 style="padding-top: 2%; color: blue">НА САМОМ ДЕЛЕ??</h2></div>
+        <form id="form_input" style="margin: 10px 20%;font-size: 1em; padding: 15px 2%;">
+            <label for="name">Имя <span style="color: darkred">*</span></label><br>
+            <input type="text" placeholder="Введите имя" name="name" id="name" style="margin-bottom: 15px;"><br>
+            <label for="email">Ваша почта <span style="color: darkred">*</span></label><br>
+            <input type="text" placeholder="Введите email" name="email" id="email" style="margin-bottom: 15px;"><br>
+            <label for="group">Ваша профессия<span style="color: darkred"></span></label><br>
+            <input type="text" placeholder="Введите вашу профессию" name="group" id="group" style="margin-bottom: 15px;"><br>
+            <label for="male">Кто вы по гороскопу <span style="color: darkred"></span></label><br>
+            <select name="gor" style="margin-bottom: 15px;">
+                <option>Рак</option>
+                <option>Весы</option>
+                <option>Дева</option>
+                <option>Рыбы</option>
+                <option>Близнецы</option>
+                <option>Лев</option>
+                <option>Скорпион</option>
+                <option>Стрелец</option>
+                <option>Телец</option>
+                <option>Овен</option>
+                <option>Козерог</option>
+                <option>Водолей</option>
+            </select><br>
+            <label for="radio">Насколько хорошо вы себя чувтсвуете по данной шкале <span style="color: darkred"></span></label><br>
+            <div id="radio" style="margin-bottom: 10px; margin-top: 1px">
+                <span><input type="radio" name="number" checked> 1</span>
+                <span><input type="radio" name="number" > 2</span>
+                <span><input type="radio" name="number" > 3</span>
+                <span><input type="radio" name="number" > 4</span>
+                <span><input type="radio" name="number"> 5</span>
+                <span><input type="radio" name="number" > 12</span><br>
+            </div>
+            <label for="checkbox">Как вы хотите себя чувствовать <span style="color: darkred"></span></label><br>
+            <div id="checkbox" style="margin-bottom: 10px; margin-top: 1px">
+                <span><input type="checkbox" name="feeling" checked> Весело</span><br>
+                <span><input type="checkbox" name="feeling" > Грустно</span><br>
+                <span><input type="checkbox" name="feeling" > Сытно</span><br>
+                <span><input type="checkbox" name="feeling" > Голодно</span><br>
+            </div>
+            <label for="message">Понравился ли Вам этот опрос? <span style="color: darkred">*</span></label><br>
+            <textarea placeholder="Поставьте 5 баллов в приложении YandexGo плиииииииииз)" name="message" id="message" style="margin-bottom: 15px; height: 100px; width: 70%"></textarea><br>
+            <div id="mess_send" style="text-align: center">
+                <button style="border-radius: 5px; padding: 5px 9px; font-size: 1em; cursor: pointer;" >
+                    Отправить
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
