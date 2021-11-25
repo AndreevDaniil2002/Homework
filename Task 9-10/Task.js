@@ -139,3 +139,176 @@ function reverseArrayInPlace(arr){
 }
 
 console.log(reverseArrayInPlace([1,2,3,4,5,6,7,8,12]));
+
+
+//Задание 8
+
+var arrayToList = function (arr) {
+    var result = null;
+    for (var i = arr.length-1; i >= 0; i--) {
+        result = { 
+            value: arr[i],
+            rest:  result
+        }
+    }
+    return result;
+}
+
+var listToArray = function (list) {
+    var result = [];
+    do { 
+        result.push(list.value);
+        list = list.rest;
+    } while ( list !== null )
+    return result;
+};
+
+var prepend = function (el, list) {
+    return { 
+        value: el,
+        rest:  list
+    }
+}
+
+var nth = function (list, ind) {
+    if ( !list ) {
+        return undefined;
+    } else if ( ind === 0 ) {
+            return list.value
+    } else {
+        return nth(list.rest, ind-1)
+    }
+}
+
+console.log(arrayToList([10, 20]));
+
+console.log(listToArray(arrayToList([10, 20, 30])));
+
+console.log(prepend(10, prepend(20, null)));
+
+console.log(nth(arrayToList([10, 20, 30]), 0));
+
+//Задание 9
+
+function deepEqual(a, b) {
+    if (a === b) {
+        return true;
+    }
+ 
+    if (a == null || typeof(a) != "object" ||
+        b == null || typeof(b) != "object")
+    {
+        return false;
+    }
+ 
+    var propertiesInA = 0, propertiesInB = 0;
+    for (var property in a) {
+        propertiesInA += 1;
+    }
+    for (var property in b) {
+        propertiesInB += 1;
+        if (!(property in a) || !deepEqual(a[property], b[property])) {
+            return false;        
+        }
+    }        
+    return propertiesInA == propertiesInB;
+}
+
+var obj = {here: {is: "an"}, object: 2};
+console.log(deepEqual(obj, obj));
+
+console.log(deepEqual(obj, {here: 1, object: 2}));
+
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+
+
+//Задание 10
+let arrays = [[1, 2, 3], [4,5,6,7,8], [9,10]]; 
+console.log(arrays.reduce((flat,current)=> flat.concat(current), []));
+
+
+//Задание 11
+
+
+var ancestry = JSON.parse(ANCESTRY_FILE);
+
+function average(array) {
+    function plus(a, b) { return a + b; }
+    return array.reduce(plus) / array.length;
+}
+
+var byName = {};
+
+ancestry.forEach(function(person) {
+    byName[person.name] = person;
+});
+
+var differences = ancestry.filter(function(person) {
+  return byName[person.mother] != null;
+}).map(function(person) {
+  return person.born - byName[person.mother].born;
+});
+
+console.log(average(differences ));
+
+
+//Задание 12
+
+var ancestry = JSON.parse(ANCESTRY_FILE);
+
+
+function average(array) {
+    function plus(a, b) { return a + b; }
+    return array.reduce(plus) / array.length;
+}
+
+var byCenturies = {}
+
+function groupBy(arr, func){ 
+    var groupObj = {};
+    arr.forEach(function(p){
+        var id = func(p);
+        if ( groupObj[id] === undefined ) {
+            groupObj[id] = [];
+        }
+        groupObj[id].push( p )
+    });
+    return groupObj;
+}
+
+function getCentury(p) {
+    return Math.ceil(p.died / 100);
+}
+
+var byCenturies = groupBy( ancestry, getCentury );
+
+for ( century in byCenturies ) {
+    byCenturies[century] = average( byCenturies[century].map(function(p){ return p.died - p.born }) );
+    console.log( century + ": " + byCenturies[century] );
+}
+
+
+//Заданиу 13
+function every(arr, func) {
+    for (var i = 0; i < arr.length; i++) {
+        if ( !func(arr[i]) ) {
+            return false
+        }
+    }
+    return true;
+};
+
+function some(arr, func) {
+    for (var i = 0; i < arr.length; i++) {
+        if ( func(arr[i]) ) {
+            return true
+        }
+    }
+    return false;
+};
+
+
+console.log(every([NaN, NaN, NaN], isNaN));
+console.log(every([NaN, NaN, 4], isNaN));
+console.log(some([NaN, 3, 4], isNaN));
+console.log(some([2, 3, 4], isNaN));
